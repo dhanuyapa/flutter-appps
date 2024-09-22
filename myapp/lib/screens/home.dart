@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'second.dart'; // Import the Second screen
-import 'third.dart'; // Import the Third screen
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -9,7 +8,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Screen'), // AppBar title for Home screen
+        title: const Text('Home Screen'),
       ),
       body: Center(
         child: Column(
@@ -17,11 +16,11 @@ class Home extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                // Navigate to Second screen when this button is pressed
-                Navigator.push(
-                  context,
+                // Navigate to Second screen and pass data
+                Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => const Second(),
+                    builder: (context) =>
+                        Second('CCCS'), // Pass data 'CCCS' to Second screen
                   ),
                 );
               },
@@ -30,13 +29,8 @@ class Home extends StatelessWidget {
             const SizedBox(height: 20), // Space between the buttons
             ElevatedButton(
               onPressed: () {
-                // Navigate to Third screen when this button is pressed
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const Third(),
-                  ),
-                );
+                // Navigate to Third screen using named route
+                Navigator.pushNamed(context, '/third');
               },
               child: const Text('Go to Third Screen'),
             ),
