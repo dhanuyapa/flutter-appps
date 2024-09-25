@@ -1,0 +1,19 @@
+#base image
+From node:20-alpine
+
+#working directory
+
+WORKDIR /app
+
+#copy the pkj json file
+COPY package.json .
+
+#install dependnices
+RUN npm install
+
+#coppy the file
+
+COPY . .
+
+#run the app
+CMD ["npm", "start"]
